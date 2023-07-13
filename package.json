@@ -1,0 +1,22 @@
+{
+  "name": "toro.backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.py",
+  "scripts": {
+    "makemigrations": "alembic revision --autogenerate",
+    "update-database:local": "env ENVIRONMENT=local alembic upgrade head",
+    "build:local": "npm run makemigrations && npm run update-database:local"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Richard-mb9/toro.backend.git"
+  },
+  "keywords": [],
+  "author": "Richad Max",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Richard-mb9/toro.backend/issues"
+  },
+  "homepage": "https://github.com/Richard-mb9/toro.backend#readme"
+}

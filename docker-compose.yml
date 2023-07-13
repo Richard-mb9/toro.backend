@@ -1,0 +1,15 @@
+version: '3'
+services:
+  db:
+    image: mysql
+
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_DATABASE: toro
+      MYSQL_USER: toro
+      MYSQL_PASSWORD: toro
+      MYSQL_ROOT_PASSWORD: toro
+
+    ports:
+      - 3306:3306
