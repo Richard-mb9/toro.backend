@@ -29,7 +29,7 @@ class CreateUserRequest(BaseModel):
     @model_validator(mode="after")
     def validate_email(self):
         email = self.email
-        regex = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+        regex = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$"
         if not re.fullmatch(regex, email):
             raise BadRequestError("Invalid email")
         return self
