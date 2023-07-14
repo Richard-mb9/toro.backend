@@ -1,5 +1,8 @@
 import os
 import importlib
+from .users import User
+from .assets import Asset
+from .accounts import Account
 
 
 def import_tables():  # pragma: no cover

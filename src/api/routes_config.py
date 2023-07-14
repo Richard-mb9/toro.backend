@@ -1,0 +1,5 @@
+URL_PREFIX = "/toro"
+API_DOC = f"{URL_PREFIX}/doc/api"
+API_DOC_REDOC = f"{URL_PREFIX}/doc/redoc"
+API_DOC_JSON = f"{URL_PREFIX}/doc/api.json"
+API_VERSION = "V1.0.0"
