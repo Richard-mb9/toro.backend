@@ -18,7 +18,7 @@ class UserService:
     def create_user(self, user: CreateUserRequest):
         new_user = User(
             name=user.name,
-            password=self.__encode_password(user.password),
+            password=self.encode_password(user.password),
             email=user.email,
             cpf=user.cpf,
         )
@@ -34,7 +34,7 @@ class UserService:
 
     def update_password(self, user_id: int, data: UpdatePasswordRequest):
         user = self.find_by_id(user_id)
-        password = self.__encode_password(data.current_password)
+        password = self.encode_password(data.current_password)
         if user.password != password:
             raise UnauthorizedError("incorrect password")
         self.repository.update(user_id, {"password": password})
@@ -57,5 +57,5 @@ class UserService:
         if self.find_by_cpf(cpf) is not None:
             raise ConflictError("this cpf is already being used")
 
-    def __encode_password(self, password: str):
+    def encode_password(self, password: str):
         return md5(password.encode("utf-8")).hexdigest()

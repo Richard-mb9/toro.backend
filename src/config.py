@@ -13,4 +13,7 @@ USER_DB = config("USER_DB", default=None)
 NAME_DB = config("NAME_DB", default=None)
 PORT_DB = int(config("PORT_DB", default=None))
 
+SECRETKEY = config("SECRETKEY", None)
+EXP_TIME_MIN = int(config("EXP_TIME_MIN", None))
+
 Base: DeclarativeMeta = declarative_base()
