@@ -4,3 +4,4 @@ from .update_user_request import UpdateUserRequest
 from .update_password_request import UpdatePasswordRequest
 from .auth_request import AuthRequest
 from .auth_response import AuthResponse
+from .spb_event_request import SPBEventRequest
