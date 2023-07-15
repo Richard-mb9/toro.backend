@@ -5,3 +5,4 @@ per-file-ignores =
     __init__.py:F401
     src/services/schemas/create_user_request.py:W605
     src/services/schemas/update_user_request.py:W605
+    tests/conftest.py:F401
