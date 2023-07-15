@@ -5,3 +5,4 @@ from .update_password_request import UpdatePasswordRequest
 from .auth_request import AuthRequest
 from .auth_response import AuthResponse
 from .spb_event_request import SPBEventRequest
+from .order_request import OrderRequest

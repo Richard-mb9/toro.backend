@@ -1,2 +1,5 @@
 from .user_repository import UserRepository
 from .accounts_repository import AccountsRepository
+from .assets_repository import AssetsRepository
+from .order_repository import OrderRepository
+from .users_assets_repository import UsersAssetsRepository

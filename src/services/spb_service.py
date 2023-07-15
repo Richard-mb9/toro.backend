@@ -1,7 +1,7 @@
 from src.commons.errors import NotFoundError, BadRequestError
 
 from .schemas import SPBEventRequest
-from .accounts_service import AccountsService
+from .account_service import AccountService
 from .user_service import UserService
 
 
@@ -10,7 +10,7 @@ class SPBService:
 
     def execute_event(self, event: SPBEventRequest):
         if event.event == "TRANSFER":
-            account_target = AccountsService().find_by_account_id(
+            account_target = AccountService().find_by_account_id(
                 int(event.target.account)
             )
             if account_target is None:
@@ -24,4 +24,4 @@ class SPBService:
 
             new_amount = float(account_target.amount) + float(event.amount)
 
-            AccountsService().update(event.target.account, new_amount)
+            AccountService().update(event.target.account, new_amount)

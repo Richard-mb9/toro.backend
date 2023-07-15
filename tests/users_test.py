@@ -6,7 +6,7 @@ from copy import deepcopy
 
 from tests.fixtures.app import Client
 from src.services import UserService
-from src.services import AccountsService
+from src.services import AccountService
 
 DEFAULT_USER = {
     "name": "Ricardo",
@@ -96,7 +96,7 @@ def test_should_create_an_account_for_the_created_user(
 
     response_data = response.json()
 
-    account = AccountsService().find_by_user_id(response_data["id"])
+    account = AccountService().find_by_user_id(response_data["id"])
 
     assert account is not None
 

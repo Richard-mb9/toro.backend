@@ -7,7 +7,7 @@ from src.services.schemas import (
 from src.domain import User
 from src.infra.repositories import UserRepository
 from src.commons.errors import ConflictError, NotFoundError, UnauthorizedError
-from .accounts_service import AccountsService
+from .account_service import AccountService
 
 
 class UserService:
@@ -27,7 +27,7 @@ class UserService:
         self.__validate_duplicate_data(email=user.email, cpf=user.cpf)
 
         user_created = self.repository.insert(new_user)
-        AccountsService().create_account(user_created.id)
+        AccountService().create_account(user_created.id)
         return {"id": user_created.id}
 
     def update_user(self, user_id: int, data: UpdateUserRequest):

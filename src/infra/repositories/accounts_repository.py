@@ -1,4 +1,4 @@
-from .base_reposiitory import BaseRepository
+from .base_repository import BaseRepository
 from src.domain import Account
 
 

@@ -1,5 +1,6 @@
-from fastapi import APIRouter, Depends
 from http import HTTPStatus
+from fastapi import APIRouter, Depends
+
 
 from src.commons.security import verify_token, get_uid_from_token
 from src.services import UserService

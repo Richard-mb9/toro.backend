@@ -3,6 +3,8 @@ import importlib
 from .users import User
 from .assets import Asset
 from .accounts import Account
+from .orders import Order
+from .users_assets import UsersAssets
 
 
 def import_tables():  # pragma: no cover

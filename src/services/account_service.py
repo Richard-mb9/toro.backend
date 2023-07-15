@@ -3,7 +3,7 @@ from src.domain import Account
 from src.commons.errors import NotFoundError
 
 
-class AccountsService:
+class AccountService:
     """Class Accounts Service"""
 
     def __init__(self):

@@ -42,4 +42,11 @@ class UnauthorizedError(APIError):
     """Unauthorized error"""
 
     def __init__(self, message):
-        super(UnauthorizedError, self).__init__(HTTPStatus.UNAUTHORIZED, message)
+        super().__init__(HTTPStatus.UNAUTHORIZED, message)
+
+
+class UnprocessableEntity(APIError):
+    """Unauthorized error"""
+
+    def __init__(self, message):
+        super().__init__(HTTPStatus.UNPROCESSABLE_ENTITY, message)
