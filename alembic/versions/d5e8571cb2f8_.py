@@ -55,7 +55,7 @@ def upgrade() -> None:
         sa.PrimaryKeyConstraint("id"),
     )
 
-    op.execute("ALTER TABLE accounts AUTO_INCREMENT = 300100;")
+    op.execute("ALTER TABLE accounts AUTO_INCREMENT = 300101;")
     op.create_table(
         "user_assets",
         sa.Column("user_id", sa.Integer(), nullable=True),

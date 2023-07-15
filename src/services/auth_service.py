@@ -8,7 +8,7 @@ from .user_service import UserService
 from src.config import SECRETKEY, EXP_TIME_MIN
 
 
-class AuthSerivice:
+class AuthService:
     """Class for Services to authenticate"""
 
     def __init__(self):
