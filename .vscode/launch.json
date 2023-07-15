@@ -16,7 +16,10 @@
                 "--reload"
             ],
             "jinja": true,
-            "justMyCode": true
+            "justMyCode": true,
+            "env": {
+                "ENVIRONMENT": "local"
+            }
         }
     ]
 }

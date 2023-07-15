@@ -50,7 +50,7 @@ class Client(TestClient):
 
 @pytest.fixture(scope="session")
 def client():
-    env = find_dotenv(".env.local")
+    env = find_dotenv(".env.test")
     load_dotenv(env)
     app = create_app()
     config.main(argv=["--raiseerr", "upgrade", "head"])

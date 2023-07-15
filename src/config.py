@@ -2,7 +2,7 @@ from decouple import config
 from dotenv import load_dotenv, find_dotenv
 from sqlalchemy.ext.declarative import declarative_base, DeclarativeMeta
 
-ENVIRONMENT = config("ENVIRONMENT", default="local")
+ENVIRONMENT = config("ENVIRONMENT", default="test")
 dotenv = find_dotenv(f".env.{ENVIRONMENT.lower()}")
 load_dotenv(dotenv)
 

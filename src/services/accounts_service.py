@@ -12,3 +12,6 @@ class AccountsService:
         account = Account(user_id=user_id)
         account_created = self.repository.insert(account)
         return {"id": account_created.id}
+
+    def find_by_user_id(self, user_id: int):
+        return self.repository.find_by_user_id(user_id)

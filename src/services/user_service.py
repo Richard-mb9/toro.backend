@@ -37,9 +37,10 @@ class UserService:
     def update_password(self, user_id: int, data: UpdatePasswordRequest):
         user = self.find_by_id(user_id)
         password = self.encode_password(data.current_password)
+        new_password = self.encode_password(data.new_password)
         if user.password != password:
             raise UnauthorizedError("incorrect password")
-        self.repository.update(user_id, {"password": password})
+        self.repository.update(user_id, {"password": new_password})
 
     def find_by_email(self, email: str):
         return self.repository.find_by_email(email)

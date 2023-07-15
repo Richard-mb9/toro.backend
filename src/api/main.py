@@ -24,5 +24,5 @@ app = create_app()
 
 
 @app.get(f"{URL_PREFIX}/info", summary="links da documentacao da API", tags=["info"])
-def read_root():
+def read_root():  # pragma: no cover
     return {"doc": API_DOC, "redoc": API_DOC_REDOC, "json": API_DOC_JSON}

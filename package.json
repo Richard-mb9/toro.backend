@@ -4,9 +4,12 @@
   "description": "",
   "main": "app.py",
   "scripts": {
+    "tests": "env ENVIRONMENT=test alembic upgrade head && pytest --cov=./src --cov-report=html",
     "makemigrations": "alembic revision --autogenerate",
     "update-database:local": "env ENVIRONMENT=local alembic upgrade head",
-    "build:local": "npm run makemigrations && npm run update-database:local"
+    "update-database:test": "env ENVIRONMENT=test alembic upgrade head",
+    "build:local": "npm run makemigrations && npm run update-database:local",
+    "build:all": "npm run update-database:local && npm run update-database:test"
   },
   "repository": {
     "type": "git",

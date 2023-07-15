@@ -14,7 +14,7 @@ class UpdateUserRequest(BaseModel):
     @model_validator(mode="after")
     def validate_email(self):
         email = self.email
-        regex = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$"
+        regex = "([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+"
         if email is not None and not re.fullmatch(regex, email):
             raise BadRequestError("Invalid email")
         return self
@@ -28,7 +28,7 @@ class UpdateUserRequest(BaseModel):
             except ValueError:
                 raise BadRequestError("Invalid CPF")
 
-            if len(cpf) < 11:
+            if len(cpf) < 10:
                 raise BadRequestError("Invalid CPF")
 
         return self
