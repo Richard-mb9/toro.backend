@@ -3,10 +3,13 @@
 from json import dumps
 from http import HTTPStatus
 from copy import deepcopy
+from typing import List
 
 from tests.fixtures.app import Client
 from src.services import UserService
 from src.services import AccountService
+from src.domain import User
+from src.infra.configs import DBConnectionHandler
 
 DEFAULT_USER = {
     "name": "Ricardo",
@@ -14,6 +17,11 @@ DEFAULT_USER = {
     "password": "123456789",
     "cpf": "15012345610",
 }
+
+
+def get_data_in_db(entity):
+    session = DBConnectionHandler().get_session()
+    return session.query(entity).filter().all()
 
 
 def test_should_create_a_user(client: Client, clear_all_tables):
@@ -225,3 +233,36 @@ def test_should_not_allow_update_password_with_invalid_passwords(
         response_data["detail"]["error"]
         == "The password must contain a maximum of 24 characters"
     )
+
+
+def test_should_get_user_account_data(client: Client, clear_all_tables):
+    response = client.post("/toro/users", data=dumps(DEFAULT_USER))
+
+    response_data = response.json()
+
+    account = AccountService().find_by_user_id(response_data["id"])
+
+    account_response = client.add_extra_data_token({"uid": response_data["id"]}).get(
+        "/toro/users/account"
+    )
+
+    account_data = account_response.json()
+
+    assert str(account.id) == account_data["account"]
+    assert str(account.branch) == account_data["branch"]
+
+
+def test_should_get_position_from_user(client: Client, clear_all_tables, orders):
+    users_in_db: List[User] = get_data_in_db(User)
+
+    user_id = users_in_db[0].id
+
+    response = client.add_extra_data_token({"uid": user_id}).get("/toro/users/position")
+    response_data = response.json()
+
+    assert response.status_code == HTTPStatus.OK
+
+    assert response_data["checking_account_amount"] == "0.00"
+    assert response_data["consolidated"] == "123.50"
+
+    assert len(response_data["positions"]) == 2

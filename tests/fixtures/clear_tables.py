@@ -1,5 +1,5 @@
 import pytest
-from src.domain import Account, User, Asset
+from src.domain import Account, User, Asset, Order, UsersAssets
 from src.infra.configs import DBConnectionHandler
 
 
@@ -15,6 +15,8 @@ def delete_items(entity):
 @pytest.fixture(scope="function")
 def clear_all_tables():
     yield
+    delete_items(Order)
+    delete_items(UsersAssets)
     delete_items(Account)
     delete_items(User)
     delete_items(Asset)

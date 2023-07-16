@@ -8,8 +8,8 @@ class AssetsFromUserPositionResponse:
     """Type Assets from user position Response"""
 
     code: str
-    quantity: str
-    current_price: str
+    quantity: int
+    current_price: Decimal
 
 
 @dataclass
