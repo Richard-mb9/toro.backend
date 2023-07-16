@@ -13,3 +13,15 @@ class BaseRepository:
 
     def list(self):
         return self.session.query(self.entity).filter().all()
+
+    def format_search_query(self, result):
+        columns = [desc[0] for desc in result.cursor.description]
+        datas = []
+        for item in result:
+            i = 0
+            data = {}
+            for col in columns:
+                data[col] = item[i]
+                i += 1
+            datas.append(data)
+        return datas

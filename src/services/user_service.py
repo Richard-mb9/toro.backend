@@ -8,6 +8,7 @@ from src.domain import User
 from src.infra.repositories import UserRepository
 from src.commons.errors import ConflictError, NotFoundError, UnauthorizedError
 from .account_service import AccountService
+from .users_assets_service import UsersAssetsService
 
 
 class UserService:
@@ -62,3 +63,22 @@ class UserService:
 
     def encode_password(self, password: str):
         return md5(password.encode("utf-8")).hexdigest()
+
+    def get_account_by_user_id(self, user_id):
+        account = AccountService().find_by_user_id(user_id)
+        return {"account": str(account.id), "branch": account.branch}
+
+    def get_user_position(self, user_id):
+        user_assets = UsersAssetsService().list_by_user_id(user_id)
+        account = AccountService().find_by_user_id(user_id)
+        total_assets_amount = 0
+
+        for asset in user_assets:
+            amount = asset["current_price"] * asset["quantity"]
+            total_assets_amount += amount
+
+        return {
+            "checking_account_amount": account.amount,
+            "positions": user_assets,
+            "consolidated": total_assets_amount + account.amount,
+        }

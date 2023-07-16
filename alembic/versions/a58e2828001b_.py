@@ -89,6 +89,7 @@ def upgrade() -> None:
         sa.PrimaryKeyConstraint("user_id", "asset_code"),
     )
     op.execute("ALTER TABLE accounts AUTO_INCREMENT = 300121;")
+    op.execute("ALTER TABLE users AUTO_INCREMENT = 1100;")
     # ### end Alembic commands ###
 
 

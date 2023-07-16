@@ -9,6 +9,8 @@ from ...services.schemas import (
     CreateUserResponse,
     UpdateUserRequest,
     UpdatePasswordRequest,
+    GetUserPositionResponse,
+    GetAccountDataResponse,
 )
 
 router = APIRouter()
@@ -34,3 +36,17 @@ async def update_password(
     data: UpdatePasswordRequest, user_id: int = Depends(get_uid_from_token)
 ):
     UserService().update_password(user_id=user_id, data=data)
+
+
+@router.get(
+    "/account", status_code=HTTPStatus.OK, response_model=GetAccountDataResponse
+)
+async def get_account_data(user_id: int = Depends(get_uid_from_token)):
+    return UserService().get_account_by_user_id(user_id=user_id)
+
+
+@router.get(
+    "/position", status_code=HTTPStatus.OK, response_model=GetUserPositionResponse
+)
+async def get_user_position(user_id: int = Depends(get_uid_from_token)):
+    return UserService().get_user_position(user_id=user_id)

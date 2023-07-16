@@ -22,6 +22,9 @@ class UsersAssetsService:
             user_id=user_id, asset_code=asset_code, quantity=quantity
         )
 
+    def list_by_user_id(self, user_id: int):
+        return self.repository.list_by_user_id(user_id)
+
     def __create(self, user_id: int, asset_code: str, quantity: int):
         users_assets = UsersAssets(
             user_id=user_id, asset_code=asset_code, quantity=quantity

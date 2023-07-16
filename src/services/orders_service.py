@@ -42,3 +42,6 @@ class OrderService:
         )
 
         self.repository.insert(order)
+
+    def filter_by_last_days(self, interval: int, limit: int):
+        return self.repository.filter_by_last_days(interval, limit)

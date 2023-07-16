@@ -5,3 +5,4 @@ from .spb_service import SPBService
 from .asset_service import AssetService
 from .users_assets_service import UsersAssetsService
 from .orders_service import OrderService
+from .trends_service import TrendsService
