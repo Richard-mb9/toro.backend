@@ -16,6 +16,27 @@
 </ul>
 
 <h3> Como Executar </h3>
+<h4>Instalando dependencias</h4>
+<p> Utilize os seguintes comandos em ordem na raiz do projeto:</p>
+
+```
+python3 -m venv venv
+```
+
+<p> Depois</p>
+
+```
+source venv/bin/activate
+```
+
+<p> E por ultimo:</p>
+
+```
+pip install -r ./requirements/requirements-dev.txt
+```
+<p>depois</p>
+
+<h4>Executando </h4>
 <p> Execute os comandos na seguinte ordem:</p>
 <p> utilize o arquivo docker-compose.yml localizado na raiz do projeto com o seguinte comando:</p>
 
@@ -23,7 +44,7 @@
 docker-compose up
 ```
 
-<p> aguarde a finalização do build dos containers</p>
+<p> aguarde a finalização do build dos containers!</p>
 <p> após os containers serem montados, execute o seguinte comando na raiz do projeto para criação das tabelas:</p>
 
 ```
