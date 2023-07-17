@@ -3,10 +3,10 @@ FROM python:alpine3.10
 RUN apk add --update nodejs npm
 
 COPY /src /app/src
-COPY /alembic /app/alembic
+COPY /requirements /app/requirements
+COPY alembic.ini /app
 COPY app.py /app
 COPY .env.local /app
-COPY requirements.txt /app
 COPY package.json /app
 COPY alembic.ini /app
 
@@ -16,7 +16,7 @@ ENV ENVIRONMENT "local"
 
 RUN pip install --upgrade pip
 
-RUN pip install -r requirements.txt
+RUN pip install -r ./requirements/requirements.txt
 
 RUN npm install
 

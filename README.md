@@ -80,7 +80,7 @@ Dentro da pasta db exite alguns arquivos sql que podem ser executados para adici
 <p>primeiro instale as dependencias utilizando o comando:</p>
 
 ```
-pip install -r requirements.txt
+pip install -r ./requirements/requirements-dev.txt
 ```
 <br>
 <p>utilize o seguinte comando para criar as tabelas tanto no banco toro quanto no banco toro-test:</p>
@@ -104,10 +104,12 @@ uvicorn app:app --host 0.0.0.0 --port 8080
 <h2>Executando testes automatizados</h2>
 <p> Para executar o projeto é necessario ter ter um banco de dados mysql rodando no endpoint localhost:3306, ele precisa ter o banco de dados toro-test</p>
 
+<p> para isso você pode utilizar o docker compose localizado na pasta /docker/mysql/docker-compose.yml</p>
+<br>
 <p>primeiro instale as dependencias utilizando o comando:</p>
 
 ```
-pip install -r requirements.txt
+pip install -r ./requirements/requirements-dev.txt
 ```
 <br>
 
@@ -116,8 +118,10 @@ pip install -r requirements.txt
 ```
 npm run tests
 ```
+<h3>Cobertura dos testes </h3>
 
 
+<p>Sera gerada uma pasta chamada htmlcov, dentro dela havera varios arquivos, encontre o arquivo index.html, copie o caminho dele e cole no seu navegador, sera exibida a cobertura dos testes automatizados </p>
 
 
 

@@ -1,0 +1,18 @@
+version: '3'
+services:
+  toro-db:
+    image: mysql
+
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+
+    volumes:
+      - ./scripts:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_DATABASE: toro
+      MYSQL_USER: toro
+      MYSQL_PASSWORD: toro
+      MYSQL_ROOT_PASSWORD: toro
+
+    ports:
+      - 3306:3306

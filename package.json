@@ -7,7 +7,8 @@
     "serverless-wsgi": "^2.0.2"
   },
   "scripts": {
-    "start": "env ENVIRONMENT=local uvicorn app:app --host 0.0.0.0 --port 8080",
+    "start": "npm run update-database:local && npm run start:local",
+    "start:local": "env ENVIRONMENT=local uvicorn app:app --host 0.0.0.0 --port 8080",
     "tests": "env ENVIRONMENT=test alembic upgrade head && pytest --cov=./src --cov-report=html",
     "makemigrations": "alembic revision --autogenerate",
     "update-database": "alembic upgrade head",
