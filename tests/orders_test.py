@@ -1,3 +1,5 @@
+# pylint: disable=W0613
+
 from typing import List
 from json import dumps
 from http import HTTPStatus
