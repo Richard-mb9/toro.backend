@@ -8,5 +8,5 @@ class AssetsRepository(BaseRepository):
     def __init__(self):
         super().__init__(Asset)
 
-    def find_by_code(self, code: str) -> Asset | None:
+    def find_by_code(self, code: str) -> Asset:
         return self.session.query(self.entity).filter_by(code=code).first()

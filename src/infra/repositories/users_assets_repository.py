@@ -20,7 +20,7 @@ class UsersAssetsRepository(BaseRepository):
 
     def find_by_user_id_and_asset_code(
         self, user_id: int, asset_code: str
-    ) -> UsersAssets | None:
+    ) -> UsersAssets:
         return (
             self.session.query(self.entity)
             .filter_by(user_id=user_id, asset_code=asset_code)

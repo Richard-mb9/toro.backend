@@ -1,15 +1,21 @@
 {
   "name": "toro.backend",
   "version": "1.0.0",
-  "description": "",
   "main": "app.py",
+  "dependencies": {
+    "serverless-python-requirements": "^5.2.0",
+    "serverless-wsgi": "^2.0.2"
+  },
   "scripts": {
+    "start": "uvicorn app:app --host 0.0.0.0 --port 8080",
     "tests": "env ENVIRONMENT=test alembic upgrade head && pytest --cov=./src --cov-report=html",
     "makemigrations": "alembic revision --autogenerate",
+    "update-database": "alembic upgrade head",
     "update-database:local": "env ENVIRONMENT=local alembic upgrade head",
     "update-database:test": "env ENVIRONMENT=test alembic upgrade head",
     "update:local": "run update-database:local && npm run makemigrations && npm run update-database:local",
-    "build:all": "npm run update-database:local && npm run update-database:test"
+    "build:all": "npm run update-database && npm run update-database:test",
+    "insert": "env ENVIRONMENT=local python insert_data.py "
   },
   "repository": {
     "type": "git",
@@ -21,5 +27,9 @@
   "bugs": {
     "url": "https://github.com/Richard-mb9/toro.backend/issues"
   },
-  "homepage": "https://github.com/Richard-mb9/toro.backend#readme"
+  "homepage": "https://github.com/Richard-mb9/toro.backend#readme",
+  "directories": {
+    "test": "tests"
+  },
+  "description": ""
 }
