@@ -6,6 +6,7 @@ from .auth_request import AuthRequest
 from .auth_response import AuthResponse
 from .spb_event_request import SPBEventRequest
 from .order_request import OrderRequest
+from .create_order_response import CreateOrderResponse
 from .get_user_position_response import GetUserPositionResponse
 from .get_account_data_response import GetAccountDataResponse
 from .best_assets_response import BestAssetResponse

@@ -5,6 +5,7 @@ from src.infra.repositories import OrderRepository
 from src.domain import Order
 
 from .schemas import OrderRequest
+from .schemas import CreateOrderResponse
 from .account_service import AccountService
 from .asset_service import AssetService
 from .users_assets_service import UsersAssetsService
@@ -16,7 +17,7 @@ class OrderService:
     def __init__(self) -> None:
         self.repository = OrderRepository()
 
-    def create_order(self, user_id, order: OrderRequest):
+    def create_order(self, user_id, order: OrderRequest) -> CreateOrderResponse:
         account = AccountService().find_by_user_id(user_id)
         asset = AssetService().find_by_code(order.symbol)
 
@@ -41,7 +42,8 @@ class OrderService:
             created_at=datetime.now(),
         )
 
-        self.repository.insert(order)
+        result: Order = self.repository.insert(order)
+        return {"order": result.id}
 
     def filter_by_last_days(self, interval: int, limit: int):
         return self.repository.filter_by_last_days(interval, limit)
