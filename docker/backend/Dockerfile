@@ -9,8 +9,6 @@ COPY .env.local /app
 COPY requirements.txt /app
 COPY package.json /app
 COPY alembic.ini /app
-COPY update_database.sh /app
-COPY startup.sh /app
 
 WORKDIR /app
 
