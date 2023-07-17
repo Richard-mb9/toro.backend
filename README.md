@@ -41,7 +41,7 @@ pip install -r ./requirements/requirements-dev.txt
 <p> utilize o arquivo docker-compose.yml localizado na raiz do projeto com o seguinte comando:</p>
 
 ```
-docker-compose up
+docker-compose up -d
 ```
 
 <p> aguarde a finalização do build dos containers!</p>
