@@ -1,5 +1,12 @@
 from fastapi import FastAPI
-from .routes import auth_routes, user_routes, spb_routes, orders_routes, trends_routes
+from .routes import (
+    auth_routes,
+    user_routes,
+    spb_routes,
+    orders_routes,
+    trends_routes,
+    assets_routes,
+)
 
 from .routes_config import URL_PREFIX, API_DOC, API_DOC_REDOC, API_DOC_JSON, API_VERSION
 
@@ -17,8 +24,9 @@ def create_app():
     app.include_router(user_routes, prefix=f"{URL_PREFIX}/users", tags=["Users"])
     app.include_router(auth_routes, prefix=f"{URL_PREFIX}/auth", tags=["Auth"])
     app.include_router(spb_routes, prefix=f"{URL_PREFIX}/spb", tags=["SPB"])
-    app.include_router(orders_routes, prefix=f"{URL_PREFIX}/order", tags=["orders"])
-    app.include_router(trends_routes, prefix=f"{URL_PREFIX}/trends", tags=["trends"])
+    app.include_router(orders_routes, prefix=f"{URL_PREFIX}/order", tags=["Orders"])
+    app.include_router(trends_routes, prefix=f"{URL_PREFIX}/trends", tags=["Trends"])
+    app.include_router(assets_routes, prefix=f"{URL_PREFIX}/assets", tags=["Assets"])
 
     return app
 

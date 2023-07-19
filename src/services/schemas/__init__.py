@@ -10,3 +10,4 @@ from .create_order_response import CreateOrderResponse
 from .get_user_position_response import GetUserPositionResponse
 from .get_account_data_response import GetAccountDataResponse
 from .best_assets_response import BestAssetResponse
+from .list_assets_response import AssetResponse
