@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from .routes import (
     auth_routes,
     user_routes,
@@ -32,6 +33,20 @@ def create_app():
 
 
 app = create_app()
+
+
+origins = [
+    "http://localhost",
+    "http://localhost:4200",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get(f"{URL_PREFIX}/info", summary="links da documentacao da API", tags=["info"])
