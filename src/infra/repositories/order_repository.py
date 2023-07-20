@@ -25,7 +25,7 @@ class OrderRepository(BaseRepository):
         query = (
             "select \n"
             "o.asset_code as symbol, \n"
-            "SUM(o.quantity)  as sold,, \n"
+            "SUM(o.quantity)  as sold, \n"
             "a.price as current_price \n"
             "from orders o \n"
             "inner join assets a on a.code  = o.asset_code \n"
