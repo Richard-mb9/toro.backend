@@ -10,6 +10,7 @@ class AssetsFromUserPositionResponse:
     code: str
     quantity: int
     current_price: Decimal
+    name: str
 
 
 @dataclass

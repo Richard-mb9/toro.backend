@@ -7,3 +7,4 @@ class GetAccountDataResponse:
 
     account: str
     branch: str
+    name: str

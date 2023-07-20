@@ -19,7 +19,7 @@ def verify_token(authorization: str = Header()):
 
 
 def get_uid_from_token(authorization: str = Header()):
-    if not authorization:
+    if not authorization or len(authorization.split()) == 1:
         raise UnauthorizedError("token is required")
     try:
         token = authorization.split()[1]

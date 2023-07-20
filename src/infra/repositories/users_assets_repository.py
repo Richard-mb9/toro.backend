@@ -10,6 +10,7 @@ class AssetsFromUser(TypedDict):
     asset_code: str
     quantity: int
     current_price: int
+    name: str
 
 
 class UsersAssetsRepository(BaseRepository):
@@ -35,7 +36,7 @@ class UsersAssetsRepository(BaseRepository):
 
     def list_by_user_id(self, user_id: int) -> List[AssetsFromUser]:
         query = (
-            "select assets.code, users_assets.quantity, assets.price as current_price "
+            "select assets.code, users_assets.quantity, assets.price as current_price, assets.name "
             "from users_assets "
             "inner join assets on assets.code = users_assets.asset_code "
             f"where users_assets.user_id = {user_id}"
@@ -43,4 +44,4 @@ class UsersAssetsRepository(BaseRepository):
 
         result = self.session.execute((text(query)))
 
-        return super().format_search_query(result)
+        return self.format_search_query(result)

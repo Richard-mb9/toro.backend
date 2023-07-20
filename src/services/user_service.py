@@ -66,7 +66,8 @@ class UserService:
 
     def get_account_by_user_id(self, user_id):
         account = AccountService().find_by_user_id(user_id)
-        return {"account": str(account.id), "branch": account.branch}
+        user = self.find_by_id(user_id)
+        return {"account": str(account.id), "branch": account.branch, "name": user.name}
 
     def get_user_position(self, user_id):
         user_assets = UsersAssetsService().list_by_user_id(user_id)
