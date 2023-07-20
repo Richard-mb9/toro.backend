@@ -9,3 +9,4 @@ class BestAssetResponse:
     symbol: str
     sold: int
     current_price: Decimal
+    name: str

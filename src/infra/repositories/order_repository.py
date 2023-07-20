@@ -10,6 +10,7 @@ class ResultBestSellingAssets(TypedDict):
 
     symbol: str
     sold: int
+    name: str
     current_price: Decimal
 
 
@@ -38,4 +39,4 @@ class OrderRepository(BaseRepository):
 
         result = self.session.execute((text(query)))
 
-        return super().format_search_query(result)
+        return self.format_search_query(result)
