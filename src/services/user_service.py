@@ -67,6 +67,8 @@ class UserService:
     def get_account_by_user_id(self, user_id):
         account = AccountService().find_by_user_id(user_id)
         user = self.find_by_id(user_id)
+        if account is None:
+            raise NotFoundError("account not found")
         return {"account": str(account.id), "branch": account.branch, "name": user.name}
 
     def get_user_position(self, user_id):
