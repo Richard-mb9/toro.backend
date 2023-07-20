@@ -13,6 +13,7 @@
   <li>um servidor mysql rodando no edpoint localhost:3306</li>
   <li>um banco de dados mysql chamado toro</li>
   <li>um banco de dados mysql chamado toro-test</li>
+  <li>frontEnd: https://github.com/Richard-mb9/toro.web.git
 </ul>
 
 <h3> Como Executar </h3>
@@ -63,6 +64,12 @@ deve possuir os seguintes bancos de dados:
   <li>toro-test</li>
 </ul>
 
+<p> Se tudo ocorreu certo, você conseguira acessar a aplicação web no seguinte endereço em seu navegador: </p>
+
+```
+http://localhost:4200
+```
+
 <h3> Conectar ao Banco de dados </h3>
 <p> Voce pode usar as seguintes credenciais para tentar se conectar ao servidor sql:</p>
 <ul>
@@ -94,6 +101,8 @@ Dentro da pasta db exite alguns arquivos sql que podem ser executados para adici
   <li>user_assets</li>
   <li>orders</li>
 </ol>
+
+<p> Você pode utilizar um dos emails na tabela users para fazer o login, e realizar seus testes, a senha para todas as contas é 12345678 </P
 
 <h2>Executando o projeto sem ser pelo docker</h2>
 <p> Para executar o projeto é necessario ter ter um banco de dados mysql rodando no endpoint localhost:3306, ele precisara de dois bancos de dados, um chamado toro, e outro chamado toro-test</p>
