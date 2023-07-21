@@ -1,14 +1,5 @@
 version: '3'
 services:
-  toro-api:
-    restart: always
-    depends_on:
-      - db
-    build:
-      context: ./
-      dockerfile: ./docker/backend/Dockerfile
-    network_mode: "host"
-
   db:
     image: mysql
 
@@ -25,6 +16,15 @@ services:
 
     ports:
       - 3306:3306
+
+  toro-api:
+    restart: always
+    depends_on:
+      - db
+    build:
+      context: ./
+      dockerfile: ./docker/backend/Dockerfile
+    network_mode: "host"
 
   toro-web:
     restart: always

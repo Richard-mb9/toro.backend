@@ -35,6 +35,7 @@ source venv/bin/activate
 ```
 pip install -r ./requirements/requirements-dev.txt
 ```
+
 <p>depois</p>
 
 <h4>Executando </h4>
@@ -46,12 +47,8 @@ docker-compose up -d
 ```
 
 <p> aguarde a finalização do build dos containers!</p>
-<p> após os containers serem montados, execute o seguinte comando na raiz do projeto para criação das tabelas:</p>
 
-```
-npm run build:all
-```
-Estes dois comandos irão criar um container mysql no seguinte endereço:
+Este Ultimo comando ira criar um container mysql com todas as tabelas necessarias para rodar a aplicação localmente no seguinte endereço:
 
 ```
 localhost:3306
@@ -85,7 +82,7 @@ http://localhost:4200
 <p> Tente acessar a seguinte url para verificar a documentação do serviço</p>
 
 ```
-http://localhost:8080/toro/doc/redoc  
+http://localhost:8080/toro/doc/redoc
 ```
 
 <h2>Autenticação</h2>
@@ -93,7 +90,7 @@ Alguns serviços exigem altentição.<br>
 Para utilizalos é necessario criar um usuario, obter um token de acesso no endpoint de autenticação com as credenciais deste usuario, e envia-lo da seguinte forma com campo authorization das headers "Bearer {access_token}"
 
 <h2>Dados para Testes</h2>
-Dentro da pasta db exite alguns arquivos sql que podem ser executados para adicionar dados no banco de dados para efeito de testes, caso decida utilizalos, eles devem ser executados na seguinte ordem:
+Dentro da pasta docker/backend/datas exite alguns arquivos sql que podem ser executados para adicionar dados no banco de dados para efeito de testes, caso decida utilizalos, eles devem ser executados na seguinte ordem:
 <ol>
   <li>Assets</li>
   <li>Users</li>
@@ -101,6 +98,8 @@ Dentro da pasta db exite alguns arquivos sql que podem ser executados para adici
   <li>user_assets</li>
   <li>orders</li>
 </ol>
+
+<b>Caso você utilize o docker-compose localizado na raiz do projeto, estes dados são inseridos automaticamente</b>
 
 <p> Você pode utilizar um dos emails na tabela users para fazer o login, e realizar seus testes, a senha para todas as contas é 12345678 </P
 
@@ -112,18 +111,21 @@ Dentro da pasta db exite alguns arquivos sql que podem ser executados para adici
 ```
 pip install -r ./requirements/requirements-dev.txt
 ```
+
 <br>
 <p>utilize o seguinte comando para criar as tabelas tanto no banco toro quanto no banco toro-test:</p>
 
 ```
 npm run build:all
 ```
+
 <br>
 <p>depois execute um dos comandos a seguir:</p>
 
 ```
 npm start
 ```
+
 <br>
 <p>ou</p>
 
@@ -141,6 +143,7 @@ uvicorn app:app --host 0.0.0.0 --port 8080
 ```
 pip install -r ./requirements/requirements-dev.txt
 ```
+
 <br>
 
 <p>depois execute os testes utilizando o comando:</p>
@@ -148,19 +151,7 @@ pip install -r ./requirements/requirements-dev.txt
 ```
 npm run tests
 ```
+
 <h3>Cobertura dos testes </h3>
 
-
 <p>Sera gerada uma pasta chamada htmlcov, dentro dela havera varios arquivos, encontre o arquivo index.html, copie o caminho dele e cole no seu navegador, sera exibida a cobertura dos testes automatizados </p>
-
-
-
-
-
-
-
-
-
-
-
-
